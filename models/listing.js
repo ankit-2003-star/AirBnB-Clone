@@ -1,0 +1,25 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const listingSchema = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    description: String,
+    image: {
+        filename:{
+            type: String,
+            default: "listingimage"
+        },
+        url:{
+            type: String,
+            default: "https://media.istockphoto.com/id/583809524/photo/alberta-wilderness-near-banff.jpg?s=612x612&w=0&k=20&c=hiI3ib9ibDxAgqEZEH09EO3JOw94v5xh6hzcuXGhO-M="
+        }
+    },
+    price: Number,
+    location: String,
+    country: String
+});
+const Listing = mongoose.model('Listing', listingSchema);
+module.exports = Listing;
