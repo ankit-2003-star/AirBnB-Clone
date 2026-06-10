@@ -4,34 +4,45 @@
     <br /><br />
     <h3>Edit Listing</h3>
     <br />
-    <form action="/listings/<%=listing._id%>?_method=PUT" method="post">
+    <form action="/listings/<%=listing._id%>?_method=PUT" method="post" novalidate class="needs-validation">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
           type="text"
-          name="title"
+          name="listing[title]"
           id="title"
           value="<%= listing.title %>"
           class="form-control"
+          required
+          
         />
+        <div class="valid-feedback">Title looks good!!</div>
       </div>
 
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea name="description" id="description" class="form-control">
+        <textarea
+          name="listing[description]"
+          id="description"
+          class="form-control"
+          required
+        >
 <%= listing.description %></textarea
         >
+        <div class="invalid-feedback">Description should be Valid</div>
       </div>
 
       <div class="mb-3">
         <label for="image" class="form-label">Image</label>
         <input
           type="text"
-          name="image"
+          name="listing[image][url]"
           id="image"
           value="<%= listing.image.url %>"
           class="form-control"
+          required
         />
+        <div class="invalid-feedback">Image should be Valid</div>
       </div>
 
       <div class="row">
@@ -39,22 +50,26 @@
           <label for="price" class="form-label">Price</label>
           <input
             type="number"
-            name="price"
+            name="listing[price]"
             id="price"
             value="<%= listing.price %>"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">Price should be Valid</div>
         </div>
 
         <div class="mb-3 col-md-8">
           <label for="country" class="form-label">Country</label>
           <input
             type="text"
-            name="country"
+            name="listing[country]"
             id="country"
             value="<%= listing.country %>"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">Country should be Valid</div>
         </div>
       </div>
 
@@ -62,11 +77,13 @@
         <label for="location" class="form-label">Location</label>
         <input
           type="text"
-          name="location"
+          name="listing[location]"
           id="location"
           value="<%= listing.location %>"
           class="form-control"
+          required
         />
+        <div class="invalid-feedback">Location should be Valid</div>
       </div>
       <button type="submit" class="btn btn-dark add-btn">Edit</button>
     </form>
