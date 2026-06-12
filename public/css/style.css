@@ -52,7 +52,7 @@ body{
 .f-info-links{
     width:100%;
 }
-.card{
+.listing-card{
     border: none !important;
     margin-bottom: 2rem !important;
 }
@@ -97,4 +97,7 @@ body{
 .show-card{
     padding-left: 0 !important;
     padding-right: 0 !important;
+}
+.card{
+    display: flex;
 }
