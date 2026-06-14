@@ -10,9 +10,11 @@ const ExpressError = require('./utils/ExpressError');
 // const { listingSchema } = require('./schema');
 // const Review=require('./models/reviews');
 // const { reviewSchema } = require('./schema');
+const session = require('express-session');
+const flash = require('connect-flash'); 
 
-const listings=require('./routes/listing');
-const reviews=require('./routes/review');
+const listings = require('./routes/listing');
+const reviews = require('./routes/review');
 
 const mongoURl = 'mongodb://127.0.0.1:27017/wanderlust';
 main()
@@ -33,15 +35,28 @@ app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
+const sessionOptions = {
+    secret: 'thisshouldbeabettersecret!',
+    resave: false,
+    saveUninitialized: true,
+}
+
 app.get('/', (req, res) => {
     res.send('hello world');
 });
 
+app.use(session(sessionOptions));
+app.use(flash());
 
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    // console.log(res.locals.success);
+    next();
+})
 
-
-app.use('/listings',listings);
-app.use('/listings/:id/reviews',reviews);
+app.use('/listings', listings);
+app.use('/listings/:id/reviews', reviews);
 
 
 // app.get('/testListing', async (req, res) => {
