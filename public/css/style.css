@@ -98,6 +98,65 @@ body{
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
-.card{
+#map {
+    height: 400px;
+    width: 100%;
+}
+.custom-marker {
+    font-size: 1.8rem;
+    color: #FF385C; /* Airbnb pink */
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.custom-marker:hover {
+    color: #E61E4D;
+    transform: scale(1.25);
+}
+.airbnb-marker {
+    width: 50px;
+    height: 50px;
+
     display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,.25);
+
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+.airbnb-marker .fa-house {
+    color: #222;
+}
+
+.airbnb-marker .fa-airbnb {
+    color: #FF385C;
+}
+.maplibregl-popup-content {
+    padding: 12px 16px;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.popup-content h6 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.popup-content h6 i {
+    color: #FF385C;
+    margin-right: 4px;
+}
+
+.popup-content p {
+    margin-top: 6px;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    color: #717171;
 }
