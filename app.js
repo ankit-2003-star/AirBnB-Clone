@@ -19,6 +19,8 @@ const ExpressError = require('./utils/ExpressError');
 // const Review=require('./models/reviews');
 // const { reviewSchema } = require('./schema');
 const session = require('express-session');
+const {MongoStore} = require('connect-mongo');
+// console.log(MongoStore);
 const flash = require('connect-flash'); 
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -51,15 +53,36 @@ app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
+
+const store=MongoStore.create({
+    mongoUrl:dbUrl,
+    crypto: {
+        secret: process.env.SECRET
+    },
+    touchAfter: 24 * 60 * 60
+});
+
+store.on('error', () => {
+    console.log('Error in Mongo Session Store',err);
+});
+
 const sessionOptions = {
-    secret: 'thisshouldbeabettersecret!',
+    store,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-}
+    cookie:{
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+        httpOnly: true
+    }
+};
 
 // app.get('/', (req, res) => {
 //     res.send('hello world');
 // });
+
+
 
 app.use(session(sessionOptions));
 app.use(flash());
