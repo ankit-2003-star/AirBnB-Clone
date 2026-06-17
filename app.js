@@ -1,3 +1,6 @@
+// const dns = require("dns");
+// dns.setDefaultResultOrder("ipv4first");
+
 if(process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
@@ -25,7 +28,10 @@ const listingRouter = require('./routes/listing');
 const reviewRouter = require('./routes/review');
 const userRouter = require('./routes/user');
 
-const mongoURl = 'mongodb://127.0.0.1:27017/wanderlust';
+// const mongoURl = 'mongodb://127.0.0.1:27017/wanderlust';
+
+const dbUrl=process.env.ATLAS_URL;
+
 main()
     .then(() => {
         console.log('database connected');
@@ -34,7 +40,8 @@ main()
         console.log(err);
     })
 async function main() {
-    await mongoose.connect(mongoURl);
+    // console.log("DB URL:", dbUrl);
+    await mongoose.connect(dbUrl);
 }
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
