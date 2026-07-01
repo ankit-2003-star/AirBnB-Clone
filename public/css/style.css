@@ -35,7 +35,7 @@ body{
         margin-top: 0.5rem;
     }
     .navbar-collapse .btn-search {
-        width: 100%;
+        width: auto;
         margin-top: 0.5rem;
     }
 }
