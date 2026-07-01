@@ -10,7 +10,36 @@ body{
 .navbar{
     height: 5rem;
     background-color: white;
+    margin-bottom: 1.5rem;
 }
+.navbar-collapse,
+.navbar-collapse.collapse.show {
+    background-color: white;
+}
+
+@media (max-width: 770px) {
+    .navbar-collapse {
+        background-color: white;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    }
+    .navbar-collapse .navbar-nav {
+        width: 100%;
+    }
+    .navbar-collapse .nav-link {
+        color: #222222 !important;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .navbar-collapse .form-control {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    .navbar-collapse .btn-search {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
+
 .fa-airbnb{
     color: #fe424d;
     font-size: 2rem;
@@ -97,6 +126,14 @@ body{
 .show-card{
     padding-left: 0 !important;
     padding-right: 0 !important;
+    width: 100%;
+}
+.btns{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
 }
 #map {
     height: 400px;
