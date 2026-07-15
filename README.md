@@ -2,6 +2,10 @@
 
 A full-stack Airbnb-inspired web application where users can browse, create, edit, and review property listings.
 
+## Homepage
+
+![WanderLust Homepage](public/WanderLust.png)
+
 ## Features
 
 - User Authentication (Signup, Login, Logout)
